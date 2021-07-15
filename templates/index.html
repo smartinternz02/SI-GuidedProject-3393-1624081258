@@ -1,0 +1,107 @@
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+body {
+  background-image: url('/static/th1.png');
+  background-position:600px 25px;
+  background-size: 650px;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: Black;
+  font-family: Star Wars;
+}
+
+.input-group mb-3{
+  outline: none;
+  border-bottom: 1px solid black;
+}
+.btn {
+  background-color:#0086b3;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.btn:hover{
+  background-color:#99cc00;
+}
+marquee {
+    width: 21%;
+	position:absolute;
+	bottom: 8px; 
+	left: 138px;
+	font-size:20;
+	font-family:calibri; 
+	color: #330066;
+	align:center;
+}
+</style>
+</head>
+<body>
+<div>
+<h1 style="float:left;margin-left:80px;font-family:cursive,Verdana;padding:20px 0px;"class="fs-1">Flight Delay Prediction </h1> </div>
+<div>
+<form style="width:30%;margin-left:80px;" action="{{ url_for('predict')}}" method="post">
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Flight Number</span>
+  <input type="text" class="form-control "  name="name" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Month</span>
+  <input type="text" class="form-control " name="month" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Day of Month</span>
+  <input type="text" class="form-control " name="dayofmonth" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Day of week</span>
+  <input type="text" class="form-control " name="dayofweek" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Origin</span>
+  <select class="form-select" name="origin">
+	<option selected>Click to select your origin</option>
+	<option value="msp">MSP</option>
+	<option value="dtw">DTW</option>
+	<option value="jfk">JFK</option>
+	<option value="sea">SEA</option>
+	<option value="alt">ALT</option>
+</select>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Destination</span>
+  <select class="form-select" name="destination">
+	<option selected>Click to select your destination</option>
+	<option value="msp">MSP</option>
+	<option value="dtw">DTW</option>
+	<option value="jfk">JFK</option>
+	<option value="sea">SEA</option>
+	<option value="alt">ALT</option>
+</select>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Scheduled departure time</span>
+  <input type="text" class="form-control " name="dept">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Scheduled arrival time</span>
+  <input type="text" class="form-control " name="arrtime">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text bg-info">Actual Departure time</span>
+  <input type="text" class="form-control " name="actdept">
+</div>
+<input style="font-size: 20px;" class="btn" type="submit" value="Predict">
+<br>
+
+<marquee behavior="slide" direction="right" loop="1">
+<h3>{{showcase}}</h3>
+</marquee>
+</form>
+</div>
+</body>
+</html>
